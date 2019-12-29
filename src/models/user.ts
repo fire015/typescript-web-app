@@ -1,10 +1,9 @@
-import fs from "fs";
+import {getUsers} from "./db";
 import bcrypt from "bcrypt";
-import {DB_DIR} from "../config";
 
-export const findUser = async (email, password): Promise<User> => {
+export const validateUser = (email: string, password: string): Promise<User> => {
     return new Promise<User>(async (resolve, reject) => {
-        const users = readDB();
+        const users = getUsers();
 
         if (!(email in users)) {
             return reject('Email address not found');
@@ -24,11 +23,6 @@ export const findUser = async (email, password): Promise<User> => {
 
         resolve(user);
     });
-};
-
-const readDB = (): object => {
-    const file = fs.readFileSync(DB_DIR + '/users.json', 'utf8');
-    return JSON.parse(file);
 };
 
 export interface User {

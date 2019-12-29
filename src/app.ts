@@ -11,7 +11,10 @@ app.set("port", process.env.PORT || 3000);
 app.set("views", VIEW_DIR);
 app.set("view engine", "pug");
 
-app.use(morgan("dev"));
+if (app.get("env") === "development") {
+    app.use(morgan("dev"));
+}
+
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
