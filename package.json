@@ -1,7 +1,8 @@
 {
   "name": "typescript-web-app",
   "version": "1.0.0",
-  "description": "A typescript express web app with session management",
+  "description": "A typescript express web app with simple user auth",
+  "author": "Jason <fire015@users.noreply.github.com>",
   "main": "dist/server.js",
   "scripts": {
     "clean": "rimraf dist/*",
