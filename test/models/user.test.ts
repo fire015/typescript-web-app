@@ -11,16 +11,16 @@ describe("user model", () => {
     test("cannot find a valid email", async () => {
         try {
             await validateUser('test@blah.com', 'password123');
-        } catch (err) {
-            expect(err).toBe('Email address not found');
+        } catch (e) {
+            expect(e.message).toBe('Email address not found');
         }
     });
 
     test("cannot find a valid password", async () => {
         try {
             await validateUser('test@test.com', 'blah');
-        } catch (err) {
-            expect(err).toBe('Incorrect password');
+        } catch (e) {
+            expect(e.message).toBe('Incorrect password');
         }
     });
 });
